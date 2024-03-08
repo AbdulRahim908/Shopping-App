@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View,ScrollView ,SafeAreaView,Dimensions,Image,} from 'react-native'
+import { StyleSheet, Text, View,ScrollView ,SafeAreaView,Dimensions,Image, TouchableOpacity,} from 'react-native'
 import React , {useState} from 'react'
 
 const Slider_splash = () => {
@@ -7,7 +7,7 @@ const Slider_splash = () => {
     const setSliderPage = (event:any) => {
         const { currentPage } = sliderState;
         const { x } = event.nativeEvent.contentOffset;
-        const indexOfNextScreen = Math.floor(x / width);
+        const indexOfNextScreen = Math.round(x / width);
         if (indexOfNextScreen !== currentPage) {
           setSliderState({
             ...sliderState,
@@ -28,28 +28,29 @@ const Slider_splash = () => {
           }}>
       <View style={{ width, height }}>
        <View style={styles.container}>
-            <Image source={require('../assets/sales.png')}/>
+            <Image style={styles.image} source={require('../assets/sales.png')}/>
             <Text style={styles.title}>Choose Products</Text>
             <Text style={styles.content}>Amet minim mollit non deserunt ullamco  est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit.</Text>
           </View></View>
           <View style={{ width, height }}>
           <View style={styles.container}>
-          <Image source={require('../assets/fashion.png')}/>
+          <Image style={styles.image} source={require('../assets/fashion.png')}/>
           <Text style={styles.title}>Make Payment</Text>
             <Text style={styles.content}>Amet minim mollit non deserunt ullamco  est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit.</Text>
           </View></View>
           <View style={{ width, height }}>
           <View style={styles.container}>
-          <Image  source={require('../assets/Shopping.png')}/>
+          <Image style={styles.image}  source={require('../assets/Shopping.png')}/>
           <Text style={styles.title}>Get Your Order</Text>
             <Text style={styles.content}>Amet minim mollit non deserunt ullamco  est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit.</Text>
           </View></View>
     </ScrollView>
     <View style={styles.paginationWrapper}>
-          {Array.from(Array(5).keys()).map((key, index) => (
+          {Array.from(Array(3).keys()).map((key, index) => (
             <View style={[styles.paginationDots, { opacity: pageIndex === index ? 1 : 0.2 }]} key={index} />
           ))}
         </View>
+        
     </SafeAreaView>
   )
 }
@@ -82,8 +83,9 @@ const styles = StyleSheet.create({
     }
     ,
   paginationWrapper: {
-    position: 'relative',
-    bottom: 200,
+    
+    position: 'absolute',
+    bottom: 10,
     left: 0,
     right: 0,
     justifyContent: 'center',
@@ -94,7 +96,14 @@ const styles = StyleSheet.create({
     height: 10,
     width: 10,
     borderRadius: 10 / 2,
-    backgroundColor: '#0898A0',
-    marginLeft: 10,
+    backgroundColor: '#F83758',
+    marginLeft: 10
+    // marginTop:100
   },
+  bottom:{
+    flexDirection:'row'
+  },
+  image:{
+    width:300,height:300
+  }
 })
