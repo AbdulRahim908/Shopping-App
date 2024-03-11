@@ -1,21 +1,22 @@
-import { StyleSheet, Text, View, SafeAreaView, TextInput,Button,Pressable } from 'react-native';
+import { StyleSheet, Text, View, SafeAreaView, TextInput,TouchableOpacity,Pressable } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import React, { useState } from 'react';
+import auth from '@react-native-firebase/auth';
 
 
 
 const Login = ({navigation}) => {
-  const[form,setForm]=useState({
-    email:'',
-    password:''
-  });
-  const handleLogin = () => {
-    // Check if email and password match specific values
-    if (form.email === 'abc@gmail.com' && form.password === '1234') {
-      // Navigate to the 'Home' screen
-      navigation.navigate('Home');
-    } else {
-      // Handle invalid login credentials
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleLogin = async () => {
+    try {
+      const userCredential = await auth().signInWithEmailAndPassword(email, password);
+      const user = userCredential.user;
+      console.log('Logged in user:', user);
+      navigation.replace('Entrypage');
+    } catch (error) {
+      console.error('Login error:', error);
       alert('Invalid login credentials');
     }
   };
@@ -26,21 +27,27 @@ const Login = ({navigation}) => {
       <View>
         <View style={styles.textinputs}>
         
-          <TextInput placeholder='username or email' inlineImageLeft=''
+          <TextInput placeholder='username or email' 
           style={styles.input}
-           value={form.email}
-           onChangeText={email=> setForm({...form,email})} />
+          value={email}
+          onChangeText={(text) => setEmail(text)} />
            <TextInput secureTextEntry
            placeholder='Password' style={styles.input}
-           value={form.password}
-           onChangeText={password=> setForm({...form,password})} />
+           value={password}
+        onChangeText={(text) => setPassword(text)} />
+                   {/* <Button 
+           
+           color='#F83758'
+           title="Login"
+           onPress={handleLogin}
+           disabled={!email || !password}
+         /> */}
            <Pressable style={styles.button} onPress={handleLogin}>
             <Text style={styles.buttontext}>Login</Text>
            </Pressable>
-          
-            
-
-         
+           <View style={styles.row}>
+          <Text style={styles.extratext}>Create An Account </Text>
+          <TouchableOpacity onPress={()=>navigation.navigate('Signup')}><Text style={styles.touchable}>SignUp</Text></TouchableOpacity></View>
         </View>
       </View>
       </SafeAreaView>
@@ -99,7 +106,20 @@ const styles = StyleSheet.create({
   buttontext:{
     color:'white',
     fontSize:15
+  },
+    row:{
+      flexDirection:'row',
+      alignSelf:'center',
+      marginRight:10
+    },
+    touchable:{
+      color:'#F83758',
+      fontSize:15
 
+    }, extratext:{
+      color:'black',
+      fontSize:15
+    },
   }
  
-})
+)

@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View,ScrollView ,SafeAreaView,Dimensions,Image, TouchableOpacity,} from 'react-native'
-import React , {useState} from 'react'
+import React , {useState,useRef} from 'react'
 
-const Slider_splash = () => {
+const Slider_splash = ({navigation}:any) => {
     const { width, height } = Dimensions.get('window');
     const [sliderState, setSliderState] = useState({ currentPage: 0 });
     const setSliderPage = (event:any) => {
@@ -13,6 +13,18 @@ const Slider_splash = () => {
             ...sliderState,
             currentPage: indexOfNextScreen,
           });
+        }
+      };
+      const scrollViewRef = useRef<ScrollView>(null);
+      const goToNextPage = () => {
+        if (scrollViewRef.current) {
+          scrollViewRef.current.scrollTo({ x: (sliderState.currentPage + 1) * width });
+        }
+      };
+    
+      const goToPreviousPage = () => {
+        if (scrollViewRef.current) {
+          scrollViewRef.current.scrollTo({ x: (sliderState.currentPage - 1) * width });
         }
       };
     
@@ -46,10 +58,22 @@ const Slider_splash = () => {
           </View></View>
     </ScrollView>
     <View style={styles.paginationWrapper}>
+    {/* <TouchableOpacity onPress={goToPreviousPage} style={styles.button}>
+          <Text style={styles.buttonText}>Previous</Text>
+        </TouchableOpacity> */}
           {Array.from(Array(3).keys()).map((key, index) => (
             <View style={[styles.paginationDots, { opacity: pageIndex === index ? 1 : 0.2 }]} key={index} />
           ))}
+          {/* <TouchableOpacity onPress={goToNextPage} style={styles.button}>
+          <Text style={styles.buttonText}>Next</Text>
+        </TouchableOpacity> */}
+         
         </View>
+        <View style={styles.next}>
+        <TouchableOpacity onPress={()=>navigation.replace('Login')} >
+                <Text style={styles.nextText}>Get Started</Text>
+                </TouchableOpacity>
+                </View>
         
     </SafeAreaView>
   )
@@ -68,18 +92,27 @@ const styles = StyleSheet.create({
         alignItems:'center',
         
     },
-    // img:{marginTop:250,
-    //     justifyContent:'center',
-    //     alignItems:'center',
-    //     alignSelf:'center'
-    // },
+    next:{
+      alignItems:'flex-end',
+      justifyContent:'space-evenly'
+
+
+    },
+    nextText:{
+      color:'#F83758',
+      fontSize:20,
+      fontWeight:'bold'
+
+    },
+    
     title:{color:'black',
         fontSize:25,
         fontWeight:'bold'
     },
     content:{
         color:'black',
-        fontSize:15
+        fontSize:15,
+        gap:20
     }
     ,
   paginationWrapper: {
@@ -105,5 +138,12 @@ const styles = StyleSheet.create({
   },
   image:{
     width:300,height:300
-  }
+  },
+  button: {
+    padding: 10,
+  },
+  buttonText: {
+    color: 'blue',
+    fontSize: 16,
+  },
 })

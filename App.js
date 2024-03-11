@@ -16,7 +16,8 @@ import Entrypage from './pages/entrypage';
 import Checkout from './pages/checkout';
 import Login from './pages/login';
 import Slider_splash from './pages/slider_splash';
-
+import SplashScreen from './pages/first_splash';
+import Signup from './pages/signup'
 const Stack=createNativeStackNavigator();
 const LogoTitle=()=> {
   return (
@@ -29,25 +30,33 @@ const LogoTitle=()=> {
     {/* <View style={styles.user}><Image  source={require('./assets/user.png')}/></View> */}
     </View>
   );
-}
+};
+
 const App=()=>{
   
 
   return(
     <NavigationContainer>
-      <Stack.Navigator initialRouteName='Slider_splash' screenOptions={{
-        headerTitle: (props) => <LogoTitle {...props} />,
-          // title: 'My home',
-          headerTitleAlign:'center',
+      <Stack.Navigator initialRouteName='Home'
+      // screenOptions={{
+      //   headerTitle: (props) => <LogoTitle {...props} />,
+      //     // title: 'My home',
+      //     headerTitleAlign:'center',
           
-          headerStyle: {
-            backgroundColor: 'white',
-          },
-          headerTintColor: 'black',
-          headerTitleStyle: {
-            fontWeight: 'bold',
-          },}}>
-            <Stack.Screen name='Slider_splash'
+      //     headerStyle: {
+      //       backgroundColor: 'white',
+      //     },
+      //     headerTintColor: 'black',
+      //     headerTitleStyle: {
+      //       fontWeight: 'bold',
+      //     },
+      //     }}
+      >
+        <Stack.Screen name='SplashScreen'
+        component={SplashScreen}
+        options={{headerShown:false}}
+        />
+        <Stack.Screen name='Slider_splash'
         component={Slider_splash}
         options={{headerShown:false}}
         />
@@ -57,11 +66,15 @@ const App=()=>{
         />
         <Stack.Screen name='Home'
         component={Home}
+        options={{headerShown:false}}
         />
         <Stack.Screen name='Checkout'
         component={Checkout}/>
         <Stack.Screen name='Login'
         component={Login}
+        options={{headerShown:false}}/>
+        <Stack.Screen name='Signup'
+        component={Signup}
         options={{headerShown:false}}/>
       </Stack.Navigator>
 
