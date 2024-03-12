@@ -1,5 +1,8 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator,  } from '@react-navigation/native-stack';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import Icon from 'react-native-vector-icons/FontAwesome';
+
 import React, { useEffect } from 'react';
 // import type {PropsWithChildren} from 'react';
 import {
@@ -18,26 +21,77 @@ import Login from './pages/login';
 import Slider_splash from './pages/slider_splash';
 import SplashScreen from './pages/first_splash';
 import Signup from './pages/signup'
+import WishList from './pages/wishlist';
+import Settings from './pages/settings';
+import Search from './pages/search';
+import ProductDetail from './pages/productDetail';
+
 const Stack=createNativeStackNavigator();
-const LogoTitle=()=> {
-  return (
-    <View style={styles.rowContainer}>
-    <Image
-      style={{ width: 30, height: 20 }}
-      source={require('./assets/Group.png')}
-    />
-    <Text style={styles.text}>Stylish</Text> 
-    {/* <View style={styles.user}><Image  source={require('./assets/user.png')}/></View> */}
-    </View>
-  );
-};
+const Tab = createBottomTabNavigator();
+
+// const LogoTitle=()=> {
+//   return (
+//     <View style={styles.rowContainer}>
+//     <Image
+//       style={{ width: 30, height: 20 }}
+//       source={require('./assets/Group.png')}
+//     />
+//     <Text style={styles.text}>Stylish</Text> 
+//     {/* <View style={styles.user}><Image  source={require('./assets/user.png')}/></View> */}
+//     </View>
+//   );
+// };
+// const StackNav=()=>{
+  
+// }
+const HomeTab=()=>{
+  return(
+  <Tab.Navigator
+  screenOptions={({ route }) => ({
+    tabBarIcon: ({ focused, color, size }) => {
+      let iconName;
+
+      if (route.name === 'Home') {
+        iconName = focused ? 'home' : 'home';
+      } else if (route.name === 'WishList') {
+        iconName = focused ? 'heart' : 'heart-o';
+      } else if (route.name === 'Checkout') {
+        iconName = focused ? 'opencart' : 'shopping-cart';
+      } else if (route.name === 'Search') {
+        iconName = focused ? 'search' : 'search';
+      } else if (route.name === 'Settings') {
+        iconName = focused ? 'cog' : 'cog';
+      }
+
+      return <Icon name={iconName} size={size} color={color} />;
+    },
+    tabBarActiveTintColor: 'tomato',
+    tabBarInactiveTintColor: 'gray',
+  })}
+  >
+    <Tab.Screen name='Home'
+        component={Home}
+        options={{headerShown:false}}/>
+    <Tab.Screen  name='WishList'
+        component={WishList}
+        options={{headerShown:false}}/>
+    <Tab.Screen name='Checkout'
+        component={Checkout}
+        options={{headerShown:false}}/>
+    <Tab.Screen name='Search'
+        component={Search}
+        options={{headerShown:false}}/>
+    <Tab.Screen name='Settings'
+        component={Settings}
+        options={{headerShown:false}}/>
+  </Tab.Navigator>
+  )
+}
 
 const App=()=>{
-  
-
   return(
     <NavigationContainer>
-      <Stack.Navigator initialRouteName='Home'
+     <Stack.Navigator initialRouteName='SplashScreen'
       // screenOptions={{
       //   headerTitle: (props) => <LogoTitle {...props} />,
       //     // title: 'My home',
@@ -64,23 +118,27 @@ const App=()=>{
         component={Entrypage}
         options={{headerShown:false}}
         />
-        <Stack.Screen name='Home'
-        component={Home}
+         <Stack.Screen name='Home'
+        component={HomeTab}
         options={{headerShown:false}}
         />
-        <Stack.Screen name='Checkout'
-        component={Checkout}/>
+        {/* <Stack.Screen name='Checkout'
+        component={Checkout}/>  */}
         <Stack.Screen name='Login'
         component={Login}
         options={{headerShown:false}}/>
         <Stack.Screen name='Signup'
         component={Signup}
         options={{headerShown:false}}/>
+        <Stack.Screen name='Settings'
+        component={Settings}
+        options={{headerShown:false}}/>
+        {/* <Stack.Screen name='ProductDetail'
+        component={ProductDetail}
+        options={{headerShown:false}}/> */}
       </Stack.Navigator>
-
-    </NavigationContainer>
+  </NavigationContainer>
   )
-
 }
 
 const styles = StyleSheet.create({

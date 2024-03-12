@@ -1,4 +1,4 @@
-import { StyleSheet, Text, TouchableOpacity, View ,StatusBar,ScrollView} from 'react-native'
+import { StyleSheet, Text, TouchableOpacity, View ,StatusBar,ScrollView,Image,Pressable} from 'react-native'
 import React from 'react'
 import useNavigation from '@react-navigation/native';
 import { NavigationContainer } from '@react-navigation/native';
@@ -7,10 +7,11 @@ import { Header,Avatar,SearchBar,Button} from 'react-native-elements';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { Colors } from 'react-native/Libraries/NewAppScreen';
 import { FlatList } from 'react-native';
-
-
-const Home=()=> {
-  const imageUrl = 'https://static.vecteezy.com/system/resources/previews/002/275/847/original/male-avatar-profile-icon-of-smiling-caucasian-man-vector.jpg';
+import {Products} from '../data/constants'
+import { useEffect, useState } from "react";
+import {dataSource} from '../data/constants'
+const Home=({navigation})=> {
+  const imageUrl = 'https://static.vecteezy.com/system/resources/previews/002/275/847/original/male-avatar-profile-icon-of-smiling-caucasian-man-vector.jpg'
   return (
     <View style={styles.container}>
       <Header backgroundColor='white'
@@ -22,10 +23,12 @@ const Home=()=> {
           rounded
           source={{ uri: imageUrl }}
           size='small'
+          onPress={()=>navigation.navigate('Settings')}
         />
       }
     />
     <SearchBar lightTheme
+    platform='android'
     placeholder='Search Any product'
     placeholderTextColor='black'
     style={{backgroundColor:'white'}}
@@ -57,43 +60,69 @@ const Home=()=> {
      <Avatar
      size='medium'
   rounded
-  source={{
-    uri:
-      'https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg',
-  }}
+  source={require('../assets/beauty.png')}
 />
 <Avatar
 size='medium'
   rounded
-  source={{
-    uri:
-      'https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg',
-  }}
+  source={require('../assets/fashionc.png')}
 />
 <Avatar
 size='medium'
   rounded
-  source={{
-    uri:
-      'https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg',
-  }}
+  source={require('../assets/kids.png')}
 />
 <Avatar
 size='medium'
   rounded
-  source={{
-    uri:
-      'https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg',
-  }}
+  source={require('../assets/mens.png')}
 />
 <Avatar
 size='medium'
   rounded
-  source={{
-    uri:
-      'https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg',
-  }}
+  source={require('../assets/womens.png')}
 />
+     </View>
+     <View style={styles.circlenames}>
+      <Text style={{color:'black'}}>Beauty</Text>
+      <Text  style={{color:'black'}}>Fashion</Text>
+      <Text  style={{color:'black'}}>Kids</Text>
+      <Text  style={{color:'black'}}>Mens</Text>
+      <Text  style={{color:'black'}}>Womens</Text>
+     </View >
+     <View style={styles.cardContainer}>
+     <FlatList
+     data={dataSource}
+     renderItem={({item}) => (
+       <View
+         style={{
+           flex: 1,
+           flexDirection: 'column',
+           margin: 5,
+           height:250,
+          borderRadius:20,
+          backgroundColor:'creame',
+          overflow: 'hidden',
+          backgroundColor:'#dcdcdc',
+          
+          
+          
+         }}><Pressable onPress={()=>{}}>
+         <Image
+           style={styles.imageThumbnail}
+           source={item.imageUrl}
+         />
+         
+         <Text style={{fontSize:20,fontWeight:'900',color:'black'}}>{item.name}</Text>
+         <Text style={{fontSize:12,fontWeight:'300',color:'black'}}>{item.details}</Text>
+         <Text style={{fontSize:18,fontWeight:'500',color:'black'}}>Rs {item.discountPrice}</Text>
+         <Text style={{fontSize:15,fontWeight:'300',color:'black'}}>{item.rating}</Text>
+         </Pressable>
+       </View>
+     )}
+     //Setting the number of column
+     numColumns={2}
+     keyExtractor={item=>item.id}/>
      </View>
     </View>
   )
@@ -107,7 +136,8 @@ const styles = StyleSheet.create({
   },
   featured:{
     flexDirection:'row',
-    gap:10
+    gap:10,
+    marginLeft:5
 
   },
   button:{
@@ -116,9 +146,32 @@ const styles = StyleSheet.create({
   },
   circles:{
     gap:30,
-    flexDirection:'row'
+    flexDirection:'row',
+    marginLeft:5
 
-  }
+  },
+  circlenames:{
+    gap:38,
+    flexDirection:'row',
+    marginLeft:7
+  },
+  cardContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    backgroundColor: 'white',
+    // borderColor:'black'
+    
+  },
+  imageThumbnail: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: 120,
+    alignSelf:'center',
+    width:200,
+    borderRadius:20
+    
+    
+  },
 
 })
 export default Home

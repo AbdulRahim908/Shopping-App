@@ -1,13 +1,16 @@
-import { ImageBackground, StyleSheet, Text, View,TouchableOpacity } from 'react-native'
+import { ImageBackground, StyleSheet, Text, View,Pressable } from 'react-native'
 import React from 'react'
 
 const Entrypage = ({navigation}) => {
   return (
     <ImageBackground style={styles.container} source={require('../assets/entry.png') }>
-        <View style={styles.buttonview}>
-             <TouchableOpacity onPress={()=>navigation.navigate('Home')} >
+        <View >
+             {/* <TouchableOpacity onPress={()=>navigation.navigate('Home')} >
                 <Text style={styles.text}>Get Started</Text>
-                </TouchableOpacity>  
+                </TouchableOpacity> */}
+                <Pressable style={styles.button} onPress={()=>navigation.replace('Home')}>
+            <Text style={styles.buttontext}>Get started</Text>
+           </Pressable>  
                 
             
         </View>
@@ -24,18 +27,19 @@ const styles = StyleSheet.create({
         backgroundColor: 'white',
         alignItems: 'center',
         justifyContent: 'center',
+      } ,button:{
+        height:50,width:200, 
+        alignItems: 'center',
+        justifyContent: 'center',
+        paddingVertical: 12,
+        paddingHorizontal: 32,
+        borderRadius: 4,
+        elevation: 3,
+        backgroundColor: '#F83758',marginTop:600
       },
-      buttonview:{
-        marginBottom:40,
-        justifyContent:'center',
-        alignItems:'center',
-        borderWidth:2,
-        flexGrow:0,
-        position:'absolute',
-        bottom:0,
-        width:200,
-        height:50,backgroundColor:'F83758',borderColor:'white'
-        
+      buttontext:{
+        color:'white',
+        fontSize:15
       },
       text:{
         fontSize:20,
@@ -43,9 +47,7 @@ const styles = StyleSheet.create({
         // fontWeight:'600'
         
       },
-      button:{
-        
-      }
+     
 
 
 })

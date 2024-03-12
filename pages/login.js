@@ -18,6 +18,9 @@ const Login = ({navigation}) => {
     } catch (error) {
       console.error('Login error:', error);
       alert('Invalid login credentials');
+    }finally {
+      // Use optional chaining operator to check if the TextInput is still mounted
+      inputRef?.current?.blur();
     }
   };
   return (
@@ -35,19 +38,12 @@ const Login = ({navigation}) => {
            placeholder='Password' style={styles.input}
            value={password}
         onChangeText={(text) => setPassword(text)} />
-                   {/* <Button 
-           
-           color='#F83758'
-           title="Login"
-           onPress={handleLogin}
-           disabled={!email || !password}
-         /> */}
-           <Pressable style={styles.button} onPress={handleLogin}>
+           <Pressable style={styles.button} onPress={(handleLogin)}>
             <Text style={styles.buttontext}>Login</Text>
            </Pressable>
            <View style={styles.row}>
           <Text style={styles.extratext}>Create An Account </Text>
-          <TouchableOpacity onPress={()=>navigation.navigate('Signup')}><Text style={styles.touchable}>SignUp</Text></TouchableOpacity></View>
+          <TouchableOpacity  onPress={()=>  navigation.navigate('Signup')}><Text style={styles.touchable}>SignUp</Text></TouchableOpacity></View>
         </View>
       </View>
       </SafeAreaView>

@@ -15,18 +15,18 @@ const Slider_splash = ({navigation}:any) => {
           });
         }
       };
-      const scrollViewRef = useRef<ScrollView>(null);
-      const goToNextPage = () => {
-        if (scrollViewRef.current) {
-          scrollViewRef.current.scrollTo({ x: (sliderState.currentPage + 1) * width });
-        }
-      };
+      // const scrollViewRef = useRef<ScrollView>(null);
+      // const goToNextPage = () => {
+      //   if (scrollViewRef.current) {
+      //     scrollViewRef.current.scrollTo({ x: (sliderState.currentPage + 1) * width });
+      //   }
+      // };
     
-      const goToPreviousPage = () => {
-        if (scrollViewRef.current) {
-          scrollViewRef.current.scrollTo({ x: (sliderState.currentPage - 1) * width });
-        }
-      };
+      // const goToPreviousPage = () => {
+      //   if (scrollViewRef.current) {
+      //     scrollViewRef.current.scrollTo({ x: (sliderState.currentPage - 1) * width });
+      //   }
+      // };
     
       const { currentPage: pageIndex } = sliderState;
   return (
