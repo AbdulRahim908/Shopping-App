@@ -5,6 +5,9 @@ const Entrypage = ({navigation}) => {
   return (
     <ImageBackground style={styles.container} source={require('../assets/entry.png') }>
         <View >
+          <Text>You want Authentic, here you go!</Text>
+          <Text> Authentic,</Text>
+          <Text>here you go!</Text>
              {/* <TouchableOpacity onPress={()=>navigation.navigate('Home')} >
                 <Text style={styles.text}>Get Started</Text>
                 </TouchableOpacity> */}
