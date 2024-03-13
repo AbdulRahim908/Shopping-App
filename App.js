@@ -29,21 +29,6 @@ import ProductDetail from './pages/productDetail';
 const Stack=createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
-// const LogoTitle=()=> {
-//   return (
-//     <View style={styles.rowContainer}>
-//     <Image
-//       style={{ width: 30, height: 20 }}
-//       source={require('./assets/Group.png')}
-//     />
-//     <Text style={styles.text}>Stylish</Text> 
-//     {/* <View style={styles.user}><Image  source={require('./assets/user.png')}/></View> */}
-//     </View>
-//   );
-// };
-// const StackNav=()=>{
-  
-// }
 const HomeTab=()=>{
   return(
   <Tab.Navigator
@@ -74,10 +59,12 @@ const HomeTab=()=>{
         options={{headerShown:false}}/>
     <Tab.Screen  name='WishList'
         component={WishList}
-        options={{headerShown:false}}/>
+        />
     <Tab.Screen name='Checkout'
         component={Checkout}
-        options={{headerShown:false}}/>
+        initialParams={{ product: null }}
+        // options={{headerShown:false}}
+        />
     <Tab.Screen name='Search'
         component={Search}
         options={{headerShown:false}}/>
@@ -91,20 +78,7 @@ const HomeTab=()=>{
 const App=()=>{
   return(
     <NavigationContainer>
-     <Stack.Navigator initialRouteName='SplashScreen'
-      // screenOptions={{
-      //   headerTitle: (props) => <LogoTitle {...props} />,
-      //     // title: 'My home',
-      //     headerTitleAlign:'center',
-          
-      //     headerStyle: {
-      //       backgroundColor: 'white',
-      //     },
-      //     headerTintColor: 'black',
-      //     headerTitleStyle: {
-      //       fontWeight: 'bold',
-      //     },
-      //     }}
+     <Stack.Navigator initialRouteName='Home'
       >
         <Stack.Screen name='SplashScreen'
         component={SplashScreen}
@@ -133,9 +107,12 @@ const App=()=>{
         <Stack.Screen name='Settings'
         component={Settings}
         options={{headerShown:false}}/>
-        {/* <Stack.Screen name='ProductDetail'
-        component={ProductDetail}
+        {/* <Stack.Screen name='Checkout'
+        component={Checkout}
         options={{headerShown:false}}/> */}
+        <Stack.Screen name='ProductDetail'
+        component={ProductDetail}
+        />
       </Stack.Navigator>
   </NavigationContainer>
   )

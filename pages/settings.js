@@ -60,7 +60,7 @@ const Settings = ({navigation}) => {
           }}
         >
           <Text
-            style={styles.text}
+            style={{color:'black',fontSize:25,fontWeight:'bold'}}
           >
             Your profile
           </Text>

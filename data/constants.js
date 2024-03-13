@@ -9,7 +9,7 @@ export const dataSource= [
       offerPercentage: 17,
       rating: 4.7,
       ratingCount: 8794,
-      details:'Autumn And Winter Casual cotton-padded jacket...'
+      details:'Perhaps the most iconic sneaker of all-time, this original "Chicago"  colorway is the cornerstone to any sneaker collection. Made famous in 1985 by Michael Jordan, the shoe has stood the test of time, becoming the most famous colorway of the Air Jordan 1. This 2015 release saw the  a'
 
     },
     {
@@ -22,7 +22,7 @@ export const dataSource= [
       offerPercentage: 15,
       rating: 4.7,
       ratingCount: 8794,
-      details:'Autumn And Winter Casual cotton-padded jacket...'
+      details:'Perhaps the most iconic sneaker of all-time, this original "Chicago"  colorway is the cornerstone to any sneaker collection. Made famous in 1985 by Michael Jordan, the shoe has stood the test of time, becoming the most famous colorway of the Air Jordan 1. This 2015 release saw the  a'
     },
     {
       id: '3',
@@ -34,7 +34,7 @@ export const dataSource= [
       offerPercentage: 16,
       rating: 4.7,
       ratingCount: 8794,
-      details:'Autumn And Winter Casual cotton-padded jacket...'
+      details:'Perhaps the most iconic sneaker of all-time, this original "Chicago"  colorway is the cornerstone to any sneaker collection. Made famous in 1985 by Michael Jordan, the shoe has stood the test of time, becoming the most famous colorway of the Air Jordan 1. This 2015 release saw the  a'
     },
     {
       id: '4',
@@ -46,7 +46,7 @@ export const dataSource= [
       offerPercentage: 11,
       rating: 4.6,
       ratingCount: 180810,
-      details:'Autumn And Winter Casual cotton-padded jacket...'
+      details:'Perhaps the most iconic sneaker of all-time, this original "Chicago"  colorway is the cornerstone to any sneaker collection. Made famous in 1985 by Michael Jordan, the shoe has stood the test of time, becoming the most famous colorway of the Air Jordan 1. This 2015 release saw the  a'
     },
     {
       id: '5',
@@ -58,7 +58,7 @@ export const dataSource= [
       offerPercentage: 11,
       rating: 4.6,
       ratingCount: 180810,
-      details:'Autumn And Winter Casual cotton-padded jacket...'
+      details:'Perhaps the most iconic sneaker of all-time, this original "Chicago"  colorway is the cornerstone to any sneaker collection. Made famous in 1985 by Michael Jordan, the shoe has stood the test of time, becoming the most famous colorway of the Air Jordan 1. This 2015 release saw the  a'
     },
     {
       id: '6',
@@ -70,7 +70,7 @@ export const dataSource= [
       offerPercentage: 11,
       rating: 4.6,
       ratingCount: 180810,
-      details:'Autumn And Winter Casual cotton-padded jacket...'
+      details:'Perhaps the most iconic sneaker of all-time, this original "Chicago"  colorway is the cornerstone to any sneaker collection. Made famous in 1985 by Michael Jordan, the shoe has stood the test of time, becoming the most famous colorway of the Air Jordan 1. This 2015 release saw the  a'
     },
     {
       id: '7',
@@ -82,7 +82,7 @@ export const dataSource= [
       offerPercentage: 11,
       rating: 4.6,
       ratingCount: 180810,
-      details:'Autumn And Winter Casual cotton-padded jacket...'
+      details:'Perhaps the most iconic sneaker of all-time, this original "Chicago"  colorway is the cornerstone to any sneaker collection. Made famous in 1985 by Michael Jordan, the shoe has stood the test of time, becoming the most famous colorway of the Air Jordan 1. This 2015 release saw the  a'
     },
     {
       id: '8',
@@ -94,6 +94,6 @@ export const dataSource= [
       offerPercentage: 11,
       rating: 4.6,
       ratingCount: 180810,
-      details:'Autumn And Winter Casual cotton-padded jacket...'
+      details:'Perhaps the most iconic sneaker of all-time, this original "Chicago"  colorway is the cornerstone to any sneaker collection. Made famous in 1985 by Michael Jordan, the shoe has stood the test of time, becoming the most famous colorway of the Air Jordan 1. This 2015 release saw the  a'
     },
   ];

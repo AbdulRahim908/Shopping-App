@@ -27,7 +27,8 @@ const styles = StyleSheet.create({
         backgroundColor: 'white',
         alignItems: 'center',
         justifyContent: 'center',
-      } ,button:{
+      } 
+      ,button:{
         height:50,width:200, 
         alignItems: 'center',
         justifyContent: 'center',

@@ -18,9 +18,6 @@ const Login = ({navigation}) => {
     } catch (error) {
       console.error('Login error:', error);
       alert('Invalid login credentials');
-    }finally {
-      // Use optional chaining operator to check if the TextInput is still mounted
-      inputRef?.current?.blur();
     }
   };
   return (

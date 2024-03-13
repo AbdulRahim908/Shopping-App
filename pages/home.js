@@ -9,14 +9,23 @@ import { Colors } from 'react-native/Libraries/NewAppScreen';
 import { FlatList } from 'react-native';
 import {Products} from '../data/constants'
 import { useEffect, useState } from "react";
-import {dataSource} from '../data/constants'
+import {dataSource} from '../data/constants';
+import {ProductDetail} from './productDetail'
 const Home=({navigation})=> {
   const imageUrl = 'https://static.vecteezy.com/system/resources/previews/002/275/847/original/male-avatar-profile-icon-of-smiling-caucasian-man-vector.jpg'
+  const truncateText = (text, maxLines) => {
+    const textArray = text.split('\n');
+    if (textArray.length > maxLines) {
+      return textArray.slice(0, maxLines).join('\n') + '…';
+    } else {
+      return text;
+    }
+  };
   return (
     <View style={styles.container}>
       <Header backgroundColor='white'
       placement="center"
-      leftComponent={{ icon: 'menu', color: 'black' }}
+      // leftComponent={{ icon: 'menu', color: 'black' }}
       centerComponent={{ text: 'Stylish', style: { color: 'black',fontSize:20,fontWeight:'bold' } }}
       rightComponent={
         <Avatar
@@ -46,7 +55,7 @@ const Home=({navigation})=> {
     }
     
     />
-    <Button title=" filter" color="black" buttonStyle={styles.button}
+    <Button title=" filter"  buttonStyle={styles.button}
     icon={
       <Icon
         name="filter"
@@ -100,21 +109,20 @@ size='medium'
            flexDirection: 'column',
            margin: 5,
            height:250,
-          borderRadius:20,
-          backgroundColor:'creame',
+          borderRadius:15,
           overflow: 'hidden',
           backgroundColor:'#dcdcdc',
           
           
           
-         }}><Pressable onPress={()=>{}}>
+         }}><Pressable onPress={()=>navigation.navigate('ProductDetail',{item})}>
          <Image
            style={styles.imageThumbnail}
            source={item.imageUrl}
          />
          
-         <Text style={{fontSize:20,fontWeight:'900',color:'black'}}>{item.name}</Text>
-         <Text style={{fontSize:12,fontWeight:'300',color:'black'}}>{item.details}</Text>
+         <Text style={{fontSize:18,fontWeight:'900',color:'black'}}>{item.name}</Text>
+         <Text style={{fontSize:12,fontWeight:'300',color:'black',lineHeight:20,maxHeight:40}}>{truncateText(item.details, 2)}</Text>
          <Text style={{fontSize:18,fontWeight:'500',color:'black'}}>Rs {item.discountPrice}</Text>
          <Text style={{fontSize:15,fontWeight:'300',color:'black'}}>{item.rating}</Text>
          </Pressable>
