@@ -21,7 +21,7 @@ const ProductDetail = ({route,navigation}) => {
     <Text style={{ fontSize: 12, fontWeight: '300', color: 'black' }}>{product.details}</Text>
     <Text style={{ fontSize: 18, fontWeight: '500', color: 'black' }}>Rs {product.discountPrice}</Text>
     <Text style={{ fontSize: 15, fontWeight: '300', color: 'black' }}>Rating {product.rating}</Text>
-    <Button title=" Checkout"  buttonStyle={styles.button} onPress={handleCheckout}
+    <Button title=" Go to cart"  buttonStyle={styles.button} onPress={handleCheckout}
     icon={
       <Icon
         name="shopping-cart"

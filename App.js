@@ -78,7 +78,7 @@ const HomeTab=()=>{
 const App=()=>{
   return(
     <NavigationContainer>
-     <Stack.Navigator initialRouteName='Splashscreen'
+     <Stack.Navigator initialRouteName='SplashScreen'
       >
         <Stack.Screen name='SplashScreen'
         component={SplashScreen}

@@ -18,10 +18,7 @@ const Checkout = ({ route }) => {
   const handleAddToCart = () => {
     setSelectedProducts([...selectedProducts, { ...product, quantity: 1 }]);
     setIsProductAdded(true);
-    //reset
-    // setTimeout(() => {
-    //   setIsProductAdded(false);
-    // }, 1000);
+ 
 
   };
 
@@ -54,7 +51,9 @@ const Checkout = ({ route }) => {
   };
 
   return (
+    
     <SafeAreaView style={styles.container}>
+      <ScrollView>
       <View><Text style={{ fontSize: 40, fontWeight: 'bold', color: 'black' }}>selected Product</Text></View>
       {product && !isProductAdded ? (
         <View style={{ flexDirection: 'row' ,gap:30}}>
@@ -99,8 +98,9 @@ const Checkout = ({ route }) => {
         
         {/* <View style={{justifyContent:'space-evenly',flex:1,marginTop:10}}></View> */}
       </View>
-      
+      </ScrollView>
     </SafeAreaView>
+    
   );
 };
 
