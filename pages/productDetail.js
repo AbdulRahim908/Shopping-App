@@ -16,7 +16,8 @@ const ProductDetail = ({route,navigation}) => {
     <View style={styles.container}>
       
     <Image style={styles.imageThumbnail} source={product.imageUrl} />
-    <Text style={{ fontSize: 20, fontWeight: '900', color: 'black' }}>{product.name}</Text>
+    <Text style={{ fontSize: 25, fontWeight: '900', color: 'black' }}>{product.name}</Text>
+    <Text style={{color:'black',fontSize:18,fontWeight:'400'}}>Product Details</Text>
     <Text style={{ fontSize: 12, fontWeight: '300', color: 'black' }}>{product.details}</Text>
     <Text style={{ fontSize: 18, fontWeight: '500', color: 'black' }}>Rs {product.discountPrice}</Text>
     <Text style={{ fontSize: 15, fontWeight: '300', color: 'black' }}>Rating {product.rating}</Text>
@@ -40,15 +41,19 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
     alignItems: 'flex-start',
     flex:1,
-    gap:10
+    gap:5,width:400
 
   },
   imageThumbnail: {
-    alignSelf:'stretch',
-    height: 220,
     alignSelf:'center',
+    height: 200,
+    alignItems:'center',
     width:400,
-    resizeMode:'cover'
+    resizeMode:'cover',
+    borderRadius:0,
+    resizeMode:'contain',
+    
+    
   },
   button:{
     backgroundColor:'green',

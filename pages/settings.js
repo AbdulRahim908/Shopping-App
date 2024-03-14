@@ -5,7 +5,7 @@ import {
   SafeAreaView,
   StyleSheet,
   TouchableOpacity,
-  Alert,alert
+  Alert,
 } from "react-native";
 
 import auth from "@react-native-firebase/auth";

@@ -4,13 +4,11 @@ import React from 'react'
 const Entrypage = ({navigation}) => {
   return (
     <ImageBackground style={styles.container} source={require('../assets/entry.png') }>
-        <View >
-          <Text>You want Authentic, here you go!</Text>
-          <Text> Authentic,</Text>
-          <Text>here you go!</Text>
-             {/* <TouchableOpacity onPress={()=>navigation.navigate('Home')} >
-                <Text style={styles.text}>Get Started</Text>
-                </TouchableOpacity> */}
+        <View style={{alignItems:'center',alignSelf:'center',justifyContent:'center',marginTop:450,gap:5}}>
+          <Text style={{fontSize:40,fontWeight:'700',color:'white'}}>You want </Text>
+          <Text style={{fontSize:40,fontWeight:'700',color:'white'}}> Authentic,here</Text>
+          <Text style={{fontSize:40,fontWeight:'700',color:'white'}}> you go!</Text>
+          <Text style={{fontSize:20,fontWeight:'300',color:'white'}}>Find it now</Text>
                 <Pressable style={styles.button} onPress={()=>navigation.replace('Home')}>
             <Text style={styles.buttontext}>Get started</Text>
            </Pressable>  
@@ -35,11 +33,9 @@ const styles = StyleSheet.create({
         height:50,width:200, 
         alignItems: 'center',
         justifyContent: 'center',
-        paddingVertical: 12,
-        paddingHorizontal: 32,
         borderRadius: 4,
         elevation: 3,
-        backgroundColor: '#F83758',marginTop:600
+        backgroundColor: '#F83758',
       },
       buttontext:{
         color:'white',

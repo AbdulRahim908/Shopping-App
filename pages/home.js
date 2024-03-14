@@ -122,8 +122,16 @@ size='medium'
          />
          
          <Text style={{fontSize:18,fontWeight:'900',color:'black'}}>{item.name}</Text>
+         
          <Text style={{fontSize:12,fontWeight:'300',color:'black',lineHeight:20,maxHeight:40}}>{truncateText(item.details, 2)}</Text>
+         <View style={{flexDirection:'row', gap:10, justifyContent:'space-between'}}>
          <Text style={{fontSize:18,fontWeight:'500',color:'black'}}>Rs {item.discountPrice}</Text>
+         <Icon
+        name="heart-o"
+        size={18}
+        color="black"
+      />
+         </View>
          <Text style={{fontSize:15,fontWeight:'300',color:'black'}}>{item.rating}</Text>
          </Pressable>
        </View>
